@@ -1,104 +1,49 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 04-Jul-2024, 9:19:26 pm
-    Author     : edwin
-*/
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-}
-
+/* admin-students.css */
 body {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
 }
 
 .container {
-    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 1200px;
-    padding: 20px;
 }
 
 h1 {
+    margin-bottom: 20px;
     text-align: center;
+}
+
+h2 {
     margin-bottom: 20px;
-    color: #333;
+    text-align: center;
 }
 
-.actions {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.action-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.action-btn:hover {
-    background-color: #45a049;
+.actions .btn {
+    margin: 0 5px;
 }
 
 .content {
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-form input, form select, form button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
 }
 
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+.student-form .form-label {
+    font-weight: 500;
 }
 
-table th {
-    background-color: #f2f2f2;
-    color: #333;
+.student-form .form-control,
+.student-form .form-select,
+.student-form .btn {
+    margin-bottom: 15px;
 }
+
+.student-form .form-control,
+.student-form .form-select,
+.student-form .btn {
+    margin-bottom: 15px;
+}
+

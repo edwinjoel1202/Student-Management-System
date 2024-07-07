@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/css/admin/adminStudents.css</file>
-            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/src/java/com/student/util/databaseConnection.java</file>
-            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/admin/adminStudents.jsp</file>
+            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/admin/students/adminSearchStudents.jsp</file>
+            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/admin/students/adminUpdateStudents.jsp</file>
+            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/Register.jsp</file>
+            <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/admin/students/adminViewStudents.jsp</file>
             <file>file:/C:/Users/edwin/OneDrive/Documents/NetBeansProjects/Student%20Management%20System/web/index.jsp</file>
         </group>
     </open-files>

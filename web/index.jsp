@@ -17,7 +17,7 @@
             <h1>Student Management System</h1>
             <div class="button-container">
                 <a href="Login.jsp" class="btn login-btn">Login</a>
-                <a href="admin/adminStudents.jsp" class="btn register-btn">Register</a>
+                <a href="Register.jsp" class="btn register-btn">Register</a>
             </div>
         </div>  
     </body>

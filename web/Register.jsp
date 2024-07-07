@@ -76,11 +76,16 @@
                     int rowsAffected = ps.executeUpdate();
                     
                     if (rowsAffected > 0) {
-                        
-                        databaseConnection.closeConnection();
-                        ps.close();
-                        response.sendRedirect("Login.jsp");
-                        out.println("<script>alert('Registration Successful!');</script>");
+                        %>
+                        <script>
+                                alert('Registration Successful !');
+                                window.location.href="Login.jsp";
+                        </script>
+                        <%
+//                        databaseConnection.closeConnection();
+//                        ps.close();
+//                        response.sendRedirect("Login.jsp");
+//                        out.println("<script>alert('Registration Successful!');</script>");
                     } else {
                         out.println("<script>alert('Registration Failed. Please try again.');</script>");
                     }
