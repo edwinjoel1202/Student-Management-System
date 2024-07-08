@@ -50,7 +50,7 @@
                 </a>
             </div>
             <div class="col-md-4 col-lg-3 mb-4">
-                <a href="#" class="card-link">
+                <a href="adminClasses.jsp" class="card-link">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Classes</h5>

@@ -1,0 +1,32 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 07-Jul-2024, 7:36:54 pm
+    Author     : edwin
+*/
+
+.container {
+    text-align: center; /* Center align content in the container */
+    max-width: 600px; /* Limit container width for better readability */
+    margin: auto; /* Center align the container itself */
+}
+
+.form-group {
+    margin-bottom: 1rem; /* Space between form groups */
+}
+
+.form-control {
+    width: 100%; /* Full width form controls */
+    max-width: 100%; /* Ensure maximum width is not exceeded */
+}
+
+.btn-primary {
+    margin-top: 1rem; /* Space above the button */
+}
+
+
+
+
+
