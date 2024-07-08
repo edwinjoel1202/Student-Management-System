@@ -32,7 +32,7 @@
 
                         try {
                             conn = databaseConnection.getConnection();
-                            String sql = "SELECT id, name FROM incharges WHERE \"isClassIncharge\" = false";
+                            String sql = "SELECT id, name FROM incharges WHERE \"isClassIncharge\" = false order by id";
                             ps = conn.prepareStatement(sql);
                             rs = ps.executeQuery();
 

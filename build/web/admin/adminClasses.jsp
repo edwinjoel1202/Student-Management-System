@@ -15,12 +15,12 @@
         <div class="btn-container">
             <a href="classes/adminCreateClass.jsp" class="btn btn-outline-primary btn-class-option">Create New Class</a>
             <a href="classes/adminViewClass.jsp" class="btn btn-outline-primary btn-class-option">View Classes</a>
-            <a href="modifyClass.jsp" class="btn btn-outline-primary btn-class-option">Modify Class</a>
+            <a href="classes/adminModifyClass.jsp" class="btn btn-outline-primary btn-class-option">Modify Class</a>
         </div>
         <div class="btn-container mt-5">
             <a href="classTimetables.jsp" class="btn btn-outline-primary btn-class-option">Class Time Tables</a>
             <a href="assignFaculties.jsp" class="btn btn-outline-primary btn-class-option">Assign Faculties in Class</a>
-            <a href="addStudents.jsp" class="btn btn-outline-primary btn-class-option">Add Students</a>
+            <a href="classes/adminAddStudents.jsp" class="btn btn-outline-primary btn-class-option">Add Students</a>
         </div>
     </div>
     <!-- Bootstrap JS and dependencies -->

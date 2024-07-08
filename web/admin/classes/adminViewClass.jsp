@@ -1,6 +1,6 @@
 <%-- 
     Document   : adminViewClasse
-    Created on : 07-Jul-2024, 9:24:27 pm
+    Created on : 07-Jul-2024, 9:24:27 pm
     Author     : edwin
 --%>
 
@@ -20,12 +20,13 @@
         <h1 class="text-center mb-4">View Classes</h1>
         
         <div class="table-responsive">
-            <table class="table table-stripped table-success table-responsive">
+            <table class="table table-striped table-success table-responsive">
                 <thead>
                     <tr>
                         <th>Class Name</th>
                         <th>Class Incharge ID</th>
                         <th>Class Incharge Name</th>
+                        <th>Number of Students</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,8 @@
                         
                         try {
                             conn = databaseConnection.getConnection();
-                            String sql = "SELECT c.classname, i.id AS incharge_id, i.name AS incharge_name " +
+                            String sql = "SELECT c.classname, i.id AS incharge_id, i.name AS incharge_name, " +
+                                         "(SELECT COUNT(*) FROM user_class_details ucd WHERE ucd.classname = c.classname) AS noofstudents " +
                                          "FROM classes c INNER JOIN incharges i ON c.inchargeid = i.id";
                             ps = conn.prepareStatement(sql);
                             rs = ps.executeQuery();
@@ -45,16 +47,18 @@
                                 String className = rs.getString("classname");
                                 String inchargeId = rs.getString("incharge_id");
                                 String inchargeName = rs.getString("incharge_name");
+                                int noOfStudents = rs.getInt("noofstudents");
                     %>
                                 <tr>
                                     <td><%= className %></td>
                                     <td><%= inchargeId %></td>
                                     <td><%= inchargeName %></td>
+                                    <td><%= noOfStudents %></td>
                                 </tr>
                     <% 
                             }
                         } catch (SQLException e) {
-                            out.println("<tr><td colspan='3'>Database Error: " + e.getMessage() + "</td></tr>");
+                            out.println("<tr><td colspan='4'>Database Error: " + e.getMessage() + "</td></tr>");
                         } finally {
                             try { if (rs != null) rs.close(); } catch (SQLException e) { /* ignored */ }
                             try { if (ps != null) ps.close(); } catch (SQLException e) { /* ignored */ }
