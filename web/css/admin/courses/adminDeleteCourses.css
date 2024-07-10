@@ -1,0 +1,14 @@
+ .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        .btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
