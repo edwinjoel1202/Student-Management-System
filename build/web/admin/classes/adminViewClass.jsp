@@ -27,6 +27,7 @@
                         <th>Class Incharge ID</th>
                         <th>Class Incharge Name</th>
                         <th>Number of Students</th>
+                        <th>View Students</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,7 @@
                                     <td><%= inchargeId %></td>
                                     <td><%= inchargeName %></td>
                                     <td><%= noOfStudents %></td>
+                                    <td><a href="adminViewStudents.jsp?classname=<%= className %>" class="btn btn-primary btn-sm">View Students</a></td>
                                 </tr>
                     <% 
                             }
