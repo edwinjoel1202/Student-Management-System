@@ -18,7 +18,7 @@
             <a href="classes/adminModifyClass.jsp" class="btn btn-outline-primary btn-class-option">Modify Class</a>
         </div>
         <div class="btn-container mt-5">
-            <a href="classTimetables.jsp" class="btn btn-outline-primary btn-class-option">Class Time Tables</a>
+            <a href="classes/adminClassTimetables.jsp" class="btn btn-outline-primary btn-class-option">Class Time Tables</a>
             <a href="assignFaculties.jsp" class="btn btn-outline-primary btn-class-option">Assign Faculties in Class</a>
             <a href="classes/adminAddStudents.jsp" class="btn btn-outline-primary btn-class-option">Add Students</a>
         </div>

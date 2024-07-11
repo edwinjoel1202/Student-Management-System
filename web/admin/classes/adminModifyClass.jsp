@@ -37,7 +37,7 @@
                             while (rs.next()) {
                                 String classname = rs.getString("classname");
                     %>
-                                <option value="<%= classname %>"><%= classname %></option>
+                                <option value="<%= classname.trim() %>"><%= classname.trim() %></option>
                     <%
                             }
                         } catch (SQLException e) {
@@ -55,21 +55,21 @@
         
         <%
             if ("post".equalsIgnoreCase(request.getMethod()) && request.getParameter("selectedClass") != null) {
-                String selectedClass = request.getParameter("selectedClass");
+                String selectedClass = request.getParameter("selectedClass").trim();
                 String currentInchargeName = "";
-                int currentInchargeId = 0;
+                String currentInchargeId = "";
 
                 try {
                     conn = databaseConnection.getConnection();
-                    String sql = "SELECT c.classname, c.inchargeid AS incharge_id, i.fname, i.lname " +
-                                 "FROM classes c INNER JOIN user_personal_details i ON c.incharge_id = i.id " +
+                    String sql = "SELECT c.classname, c.inchargeid AS incharge_id, i.name AS incharge_name " +
+                                 "FROM classes c INNER JOIN incharges i ON c.inchargeid = i.id " +
                                  "WHERE c.classname = ?";
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, selectedClass);
                     rs = ps.executeQuery();
                     if (rs.next()) {
-                        currentInchargeId = rs.getInt("incharge_id");
-                        currentInchargeName = rs.getString("fname") + " " + rs.getString("lname");
+                        currentInchargeId = rs.getString("incharge_id");
+                        currentInchargeName = rs.getString("incharge_name");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -82,7 +82,7 @@
         
         <!-- Class Details Form -->
         <h2 class="text-center mt-5 mb-4">Modify Details for <%= selectedClass %></h2>
-        <form method="post">
+        <form method="post" action="adminUpdateClass.jsp">
             <input type="hidden" name="selectedClass" value="<%= selectedClass %>">
             <div class="form-group mb-3">
                 <label for="classname" class="form-label">Class Name</label>
@@ -91,21 +91,19 @@
             <div class="form-group mb-3">
                 <label for="incharge" class="form-label">Class Incharge</label>
                 <select id="incharge" name="incharge" class="form-select" required>
-                    <option value="<%= currentInchargeId %>"><%= currentInchargeName %> (Current)</option>
+                    <option value="<%= currentInchargeId %>"><%= currentInchargeId %> - <%= currentInchargeName %> (Current)</option>
                     <!-- Add options dynamically from database -->
                     <%
                         try {
                             conn = databaseConnection.getConnection();
-                            String sql = "SELECT id, fname, lname FROM user_personal_details WHERE isClassIncharge = false";
+                            String sql = "SELECT id, name FROM incharges WHERE \"isClassIncharge\" = false";
                             ps = conn.prepareStatement(sql);
                             rs = ps.executeQuery();
                             while (rs.next()) {
-                                int id = rs.getInt("id");
-                                String fname = rs.getString("fname");
-                                String lname = rs.getString("lname");
-                                String fullName = fname + " " + lname;
+                                String id = rs.getString("id");
+                                String name = rs.getString("name");
                     %>
-                                <option value="<%= id %>"><%= fullName %></option>
+                                <option value="<%= id %>"><%= id %> - <%= name %></option>
                     <%
                             }
                         } catch (SQLException e) {
@@ -117,51 +115,8 @@
                         }
                     %>
                 </select>
-            </div>
-            <div class="form-group mb-3">
-                <label for="description" class="form-label">Class Description</label>
-                <textarea id="description" name="description" class="form-control" rows="3"></textarea>
-            </div>
-            <div class="form-group mb-3">
-                <label for="timetable" class="form-label">Class Timetable</label>
-                <textarea id="timetable" name="timetable" class="form-control" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Update Class</button>
-        </form>
-
-        <h2 class="text-center mt-5 mb-4">Add/Remove Students</h2>
-        <form method="post" action="adminModifyClass.jsp">
-            <input type="hidden" name="selectedClass" value="<%= selectedClass %>">
-            <div class="form-group mb-3">
-                <label for="students" class="form-label">Add/Remove Students</label>
-                <select id="students" name="students" class="form-select" multiple>
-                    <!-- Add options dynamically from database -->
-                    <%
-                        try {
-                            conn = databaseConnection.getConnection();
-                            String sql = "SELECT regno, fname, lname FROM user_personal_details";
-                            ps = conn.prepareStatement(sql);
-                            rs = ps.executeQuery();
-                            while (rs.next()) {
-                                String regno = rs.getString("regno");
-                                String fname = rs.getString("fname");
-                                String lname = rs.getString("lname");
-                                String fullName = fname + " " + lname;
-                    %>
-                                <option value="<%= regno %>"><%= fullName %> (<%= regno %>)</option>
-                    <%
-                            }
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (rs != null) rs.close();
-                            if (ps != null) ps.close();
-                            if (conn != null) conn.close();
-                        }
-                    %>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Students</button>
         </form>
 
         <%
@@ -172,5 +127,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
