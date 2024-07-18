@@ -15,7 +15,7 @@
             <div class="btn-container">
                 <a href="classes/adminCreateClass.jsp" class="btn btn-outline-success btn-class-option">Create New Class</a>
                 <a href="classes/adminViewClass.jsp" class="btn btn-outline-success btn-class-option">View Classes</a>
-                <a href="classes/adminModifyClass.jsp" class="btn btn-outline-primary btn-class-option">Modify Class</a>
+                <a href="classes/adminModifyClass.jsp" class="btn btn-outline-success btn-class-option">Modify Class</a>
             </div>
             <div class="btn-container mt-5">
                 <a href="classes/add_courses/adminAddCoursesInClass.jsp" class="btn btn-outline-success btn-class-option">Add course in Class</a>
