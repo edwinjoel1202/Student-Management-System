@@ -1,8 +1,9 @@
 <%-- 
     Document   : adminModifyClass
-    Created on : 08-Jul-2024, 7:33:44 pm
+    Created on : 08-Jul-2024, 7:33:44 pm
     Author     : edwin
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
 <%@page import="com.student.util.databaseConnection" %>
@@ -31,7 +32,7 @@
                         ResultSet rs = null;
                         try {
                             conn = databaseConnection.getConnection();
-                            String sql = "SELECT classname FROM classes";
+                            String sql = "SELECT classname FROM classes order by classname";
                             ps = conn.prepareStatement(sql);
                             rs = ps.executeQuery();
                             while (rs.next()) {
@@ -82,7 +83,7 @@
         
         <!-- Class Details Form -->
         <h2 class="text-center mt-5 mb-4">Modify Details for <%= selectedClass %></h2>
-        <form method="post" action="adminUpdateClass.jsp">
+        <form method="post" action="adminModifyClass.jsp">
             <input type="hidden" name="selectedClass" value="<%= selectedClass %>">
             <div class="form-group mb-3">
                 <label for="classname" class="form-label">Class Name</label>
@@ -96,7 +97,7 @@
                     <%
                         try {
                             conn = databaseConnection.getConnection();
-                            String sql = "SELECT id, name FROM incharges WHERE \"isClassIncharge\" = false";
+                            String sql = "SELECT id, name FROM incharges WHERE \"isClassIncharge\" = false order by id";
                             ps = conn.prepareStatement(sql);
                             rs = ps.executeQuery();
                             while (rs.next()) {
@@ -116,10 +117,69 @@
                     %>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Update Class</button>
+            <button type="submit" name="modifyClass" class="btn btn-primary">Modify Class</button>
         </form>
 
         <%
+                if (request.getParameter("modifyClass") != null) {
+                    String newClassname = request.getParameter("classname");
+                    String newInchargeId = request.getParameter("incharge");
+
+                    try {
+                        conn = databaseConnection.getConnection();
+                        conn.setAutoCommit(false);
+
+                        // Get the current incharge ID
+                        String sqlGetCurrentIncharge = "SELECT inchargeid FROM classes WHERE classname = ?";
+                        ps = conn.prepareStatement(sqlGetCurrentIncharge);
+                        ps.setString(1, selectedClass);
+                        ResultSet rsIncharge = ps.executeQuery();
+                        if (rsIncharge.next()) {
+                            currentInchargeId = rsIncharge.getString("inchargeid");
+                        }
+                        rsIncharge.close();
+                        ps.close();
+
+                        // Update the class details
+                        String sqlUpdateClass = "UPDATE classes SET classname = ?, inchargeid = ? WHERE classname = ?";
+                        ps = conn.prepareStatement(sqlUpdateClass);
+                        ps.setString(1, newClassname);
+                        ps.setString(2, newInchargeId);
+                        ps.setString(3, selectedClass);
+                        ps.executeUpdate();
+                        ps.close();
+
+                        // Update the old incharge's status
+                        String sqlUpdateOldIncharge = "UPDATE incharges SET \"isClassIncharge\" = false WHERE id = ?";
+                        ps = conn.prepareStatement(sqlUpdateOldIncharge);
+                        ps.setString(1, currentInchargeId);
+                        ps.executeUpdate();
+                        ps.close();
+
+                        // Update the new incharge's status
+                        String sqlUpdateNewIncharge = "UPDATE incharges SET \"isClassIncharge\" = true WHERE id = ?";
+                        ps = conn.prepareStatement(sqlUpdateNewIncharge);
+                        ps.setString(1, newInchargeId);
+                        ps.executeUpdate();
+                        ps.close();
+
+                        conn.commit();
+                        out.println("<div class='alert alert-success mt-3'>Class updated successfully.</div>");
+                    } catch (SQLException e) {
+                        if (conn != null) {
+                            try {
+                                conn.rollback();
+                            } catch (SQLException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                        e.printStackTrace();
+                        out.println("<div class='alert alert-danger mt-3'>Error updating class. Please try again.</div>");
+                    } finally {
+                        if (ps != null) ps.close();
+                        if (conn != null) conn.close();
+                    }
+                }
             }
         %>
     </div>
