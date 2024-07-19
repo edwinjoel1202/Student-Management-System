@@ -60,11 +60,21 @@
                 </a>
             </div>
             <div class="col-md-4 col-lg-3 mb-4">
+                <a href="adminExam.jsp" class="card-link">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Exams </h5>
+                            <p class="card-text">Manage exams</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
                 <a href="#" class="card-link">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Exams & Results</h5>
-                            <p class="card-text">Manage exams and view results</p>
+                            <h5 class="card-title">Results </h5>
+                            <p class="card-text">Manage exam Results</p>
                         </div>
                     </div>
                 </a>
