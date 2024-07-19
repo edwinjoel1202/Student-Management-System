@@ -22,7 +22,7 @@
                 <a href="classes/delete_course/adminDeleteCourseFromClass.jsp" class="btn btn-outline-success btn-class-option">Remove courses from Class</a>
                 <a href="classes/adminViewCoursesInClass.jsp" class="btn btn-outline-success btn-class-option">View Courses in class</a>
             </div><div class="btn-container mt-5">
-                 <a href="#" class="btn btn-outline-primary btn-class-option">Change Faculties in Class</a> 
+                 <a href="classes/modify_courses/adminModifyFaculties.jsp" class="btn btn-outline-success btn-class-option">Change Faculties in Class</a> 
                 <a href="classes/adminAddStudents.jsp" class="btn btn-outline-success btn-class-option">Add Students</a>
                 <a href="classes/remove_students/adminRemoveStudentsFromClass.jsp" class="btn btn-outline-success btn-class-option">Remove Students from Class</a>
             </div>
