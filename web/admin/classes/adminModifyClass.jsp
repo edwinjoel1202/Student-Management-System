@@ -1,8 +1,4 @@
-<%-- 
-    Document   : adminModifyClass
-    Created on : 08-Jul-2024, 7:33:44 pm
-    Author     : edwin
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
