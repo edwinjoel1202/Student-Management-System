@@ -27,7 +27,7 @@
         if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
     }
 
-    // Create a JSON response
+    // Return JSON response
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     out.print("{\"count\": " + numberOfStudents + "}");
